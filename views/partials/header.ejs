@@ -1,0 +1,280 @@
+<!-- Braised Pork King - Header Template
+     Created: September 17, 2025
+     Navigation, Language Toggle, WhatsApp Integration -->
+
+<header class="header">
+    <div class="header-content">
+        <!-- Logo Section -->
+        <div class="logo">
+            <div class="crown crown-special"><i class="fas fa-crown"></i></div>
+            <span class="golden-shimmer">Braised Pork King</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="navigation-desktop">
+            <ul class="nav-menu">
+                <li><a href="/" class="<%= page === 'home' ? 'active' : '' %>">Home</a></li>
+                <li><a href="/about" class="<%= page === 'about' ? 'active' : '' %>">About Us</a></li>
+                <li><a href="/franchise" class="<%= page === 'franchise' ? 'active' : '' %>">Franchise</a></li>
+            </ul>
+
+            <!-- Language Toggle -->
+            <div class="language-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="zh">中文</button>
+            </div>
+
+           
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    
+
+    <!-- Mobile Navigation Menu -->
+    <nav id="mobileMenu">
+        <ul class="nav-menu">
+        <li><a href="/" class="<%= page === 'home' ? 'active' : '' %>"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/about" class="<%= page === 'about' ? 'active' : '' %>"><i class="fas fa-users"></i> About Us</a></li>
+        <li><a href="/franchise" class="<%= page === 'franchise' ? 'active' : '' %>"><i class="fas fa-store"></i> Franchise</a></li>
+
+        <!-- Mobile Language Toggle -->
+        <li class="language-toggle">
+            <button class="lang-btn active" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="zh">中文</button>
+        </li>
+    </ul>
+    </nav>
+
+    </div>
+</header>
+
+
+
+   <!-- Enhanced WhatsApp Float with Form -->
+  <div class="whatsapp-float">
+      <button id="whatsappToggle"
+              aria-label="Contact us on WhatsApp"
+              style="display: flex; align-items: center; justify-content:
+  center; width: 50px; height: 50px; color: white; font-size: var(--text-2xl);     
+  text-decoration: none; border-radius: 50%; background: #25D366; border: none;    
+   cursor: pointer; transition: all 0.3s ease;">
+          <i class="fab fa-whatsapp"></i>
+      </button>
+
+      <!-- Quick Contact Popup -->
+      <div id="whatsappForm" class="whatsapp-popup" style="display: none;">        
+          <div class="popup-content">
+              <h4>💬 Quick Message</h4>
+              <form id="quickWhatsappForm">
+                  <input type="text" name="name" placeholder="Your Name"
+  required>
+                  <input type="tel" name="phone" placeholder="Your Phone
+  (optional)">
+                  <textarea name="message" placeholder="Your message..."
+  required></textarea>
+                  <div class="popup-buttons">
+                      <button type="submit" class="btn-send">
+                          <i class="fab fa-whatsapp"></i> Send via WhatsApp        
+                      </button>
+                      <button type="button" id="closePopup"
+  class="btn-close">✕</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+<!-- Header JavaScript -->
+<script>
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', function() {
+            // Toggle menu visibility
+            mobileMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+
+            // Update ARIA attributes
+            const isExpanded = mobileMenu.classList.contains('active');
+            mobileToggle.setAttribute('aria-expanded', isExpanded);
+
+            // Add animation class
+            if (isExpanded) {
+                mobileMenu.classList.add('mobile-menu-enter');
+            }
+        });
+    }
+
+    // Language Toggle Functionality
+    const langButtons = document.querySelectorAll('.lang-btn');
+
+    langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedLang = this.getAttribute('data-lang');
+
+            // Remove active from all buttons in the same container
+            const container = this.closest('.language-toggle');
+            container.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active to clicked button
+            this.classList.add('active');
+
+            // Store language preference
+            localStorage.setItem('braisedPorkKingLang', selectedLang);
+
+            // TODO: Implement actual language switching
+            // For now, just show feedback
+            console.log('Language switched to:', selectedLang);
+
+            // Future: Trigger language content update
+            // updatePageLanguage(selectedLang);
+        });
+    });
+
+    // Load saved language preference
+    const savedLang = localStorage.getItem('braisedPorkKingLang');
+    if (savedLang) {
+        langButtons.forEach(button => {
+            if (button.getAttribute('data-lang') === savedLang) {
+                button.click();
+            }
+        });
+    }
+
+    // Close mobile menu when clicking menu items
+    const mobileMenuLinks = mobileMenu?.querySelectorAll('a');
+    mobileMenuLinks?.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.header') && mobileMenu?.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+});
+
+// Enhanced WhatsApp Popup Functionality
+  document.addEventListener('DOMContentLoaded', function() {
+      const whatsappToggle = document.getElementById('whatsappToggle');
+      const whatsappForm = document.getElementById('whatsappForm');
+      const closePopup = document.getElementById('closePopup');
+      const quickForm = document.getElementById('quickWhatsappForm');
+      const whatsappFloat = document.querySelector('.whatsapp-float');
+
+      // Toggle popup
+      if (whatsappToggle && whatsappForm && whatsappFloat) {
+          whatsappToggle.addEventListener('click', function() {
+              const isVisible = whatsappForm.style.display !== 'none';
+              whatsappForm.style.display = isVisible ? 'none' : 'block';
+
+              // Control pulse animation
+              if (isVisible) {
+                  // Popup closing - restore pulse
+                  whatsappFloat.classList.remove('no-pulse');
+              } else {
+                  // Popup opening - stop pulse
+                  whatsappFloat.classList.add('no-pulse');
+              }
+          });
+      }
+
+      // Close popup
+      if (closePopup && whatsappForm && whatsappFloat) {
+          closePopup.addEventListener('click', function() {
+              whatsappForm.style.display = 'none';
+              // Restore pulse when popup closes
+              whatsappFloat.classList.remove('no-pulse');
+          });
+      }
+
+      // Handle form submission
+      if (quickForm) {
+          quickForm.addEventListener('submit', function(e) {
+              e.preventDefault();
+
+              const formData = new FormData(quickForm);
+              const name = formData.get('name').trim();
+              const phone = formData.get('phone').trim();
+              const message = formData.get('message').trim();
+
+              // Validate
+              if (!name || !message) {
+                  alert('Please fill in your name and message.');
+                  return;
+              }
+
+              // Create WhatsApp message
+              const whatsappMessage = encodeURIComponent(
+                  `Hello Braised Pork King! 🍛\n\n` +
+                  `Name: ${name}\n` +
+                  (phone ? `Phone: ${phone}\n` : '') +
+                  `Message: ${message}\n\n` +
+                  `I sent this through your website. Please reply when
+  convenient!`
+              );
+
+              const whatsappURL = `https://wa.me/<%= businessPhone
+  %>?text=${whatsappMessage}`;
+
+              // Open WhatsApp
+              window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+
+              // Reset and close
+              quickForm.reset();
+              whatsappForm.style.display = 'none';
+              // Restore pulse when popup closes after form submission
+              if (whatsappFloat) {
+                  whatsappFloat.classList.remove('no-pulse');
+              }
+          });
+      }
+
+      // Close popup when clicking outside
+      document.addEventListener('click', function(e) {
+          if (whatsappForm &&
+              whatsappForm.style.display !== 'none' &&
+              !whatsappForm.contains(e.target) &&
+              !whatsappToggle.contains(e.target)) {
+              whatsappForm.style.display = 'none';
+              // Restore pulse when popup closes from outside click
+              if (whatsappFloat) {
+                  whatsappFloat.classList.remove('no-pulse');
+              }
+          }
+      });
+  });
+
+// Smooth scroll behavior for internal links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>

@@ -1,0 +1,820 @@
+/* Braised Pork King - Consolidated Styles
+ * Created: September 23, 2025
+ * Single CSS file - Mobile-first responsive design
+ * Food-stall operational mindset - Keep it simple!
+ * NO !important declarations - Clean CSS cascade
+ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700;900&family=Inter:wght@700;900&display=swap');
+
+/* ===============================================
+   CSS VARIABLES - Brand Colors & Design System
+   =============================================== */
+:root {
+    /* Primary Brand Colors (from kitchen system) */
+    --primary: #FFC700;          
+    --secondary: #E63946;         
+    --primary-light:  #FFC600;     
+    --secondary-light:  #DC143C;   
+
+    /* Extended Brand Palette */
+    
+    --warm-white: #FFF8F0;        /* Clean background */
+    --charcoal: #000000;          /* Dark text */
+
+ 
+    /* Font Families */
+    --font-royal: 'Noto Sans TC', 'Inter', sans-serif;     /* Headers - Royal feel */
+    --font-clean: 'Inter', sans-serif;           /* Body - Clean & readable */
+    --font-accent: 'Poppins', sans-serif;        /* Accent - Brand character */
+
+    /* Font Sizes */
+    --text-sm: 0.875rem;     /* 14px */
+    --text-base: 1rem;       /* 16px */
+    --text-lg: 1.125rem;     /* 18px */
+    --text-xl: 1.25rem;      /* 20px */
+    --text-2xl: 1.5rem;      /* 24px */
+    --text-3xl: 1.875rem;    /* 30px */
+    --text-4xl: 2.25rem;     /* 36px */
+
+    /* Spacing System */
+    --space-2: 0.5rem;      /* 8px */
+    --space-3: 0.75rem;     /* 12px */
+    --space-4: 1rem;        /* 16px */
+    --space-6: 1.5rem;      /* 24px */
+    --space-8: 2rem;        /* 32px */
+    --space-12: 3rem;       /* 48px */
+    --space-16: 4rem;       /* 64px */
+    --space-20: 5rem;       /* 80px */
+}
+
+/* ===============================================
+   RESET & BASE STYLES
+   =============================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-clean);
+    background-color: var(--warm-white);
+    color: var(--charcoal);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ===============================================
+   TYPOGRAPHY
+   =============================================== */
+h1, h2, h3 {
+    font-family: var(--font-royal);
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+
+p {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-4);
+    color: var(--charcoal);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary);
+}
+
+/* ===============================================
+   UTILITY CLASSES
+   =============================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.hidden { display: none; }
+.visible { display: block; }
+/* ===============================================
+   LAYOUT - UNIFIED SPACING
+   =============================================== */
+/* Unified section spacing across all pages - 80px top/bottom */
+section {
+    padding: var(--space-20) 0;
+}
+
+/* ===============================================
+   BUTTONS
+   =============================================== */
+.btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    border: none;
+    border-radius: 25px;
+    font-family: var(--font-accent);
+    font-weight: 600;
+    font-size: var(--text-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), #FFA500);
+    color: var(--primary);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ===============================================
+   HEADER & NAVIGATION - MOBILE FIRST
+   =============================================== */
+.header {
+    /* background: linear-gradient(0deg, var(--primary), var(--secondary-light)); */
+    background: var(--secondary-light);
+    color: var(--charcoal);
+    padding: var(--space-4) 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(46, 49, 146, 0.2);
+    position:relative;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-royal);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--primary);
+    text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+/* Mobile Navigation (Default) - Hide desktop nav */
+.navigation-desktop {
+    display: none;
+}
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: var(--space-2);
+    gap: 3px;
+    background: none;
+    border: none;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Menu - Hidden by default */
+#mobileMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    box-shadow: 0 4px 15px rgba(46, 49, 146, 0.3);
+    padding: var(--space-8);
+    z-index: 999;
+    text-align: center;
+}
+
+/* Show mobile menu when active */
+#mobileMenu.active {
+    display: block;
+}
+
+#mobileMenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mobileMenu li {
+    margin-bottom: var(--space-4);
+}
+
+#mobileMenu a {
+    color: white;
+    font-family: var(--font-accent);
+    font-weight: 500;
+    font-size: var(--text-base);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: block;
+}
+
+#mobileMenu a:hover,
+#mobileMenu a.active {
+    color: var(--secondary);
+    transform: translateX(10px);
+}
+
+/* Language Toggle */
+.language-toggle {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    justify-content: center;
+}
+
+.lang-btn {
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    font-family: var(--font-accent);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.lang-btn.active,
+.lang-btn:hover {
+    background: var(--primary);
+    color: var(--primary);
+}
+
+
+/* ===============================================
+   FOOTER - MOBILE FIRST
+   =============================================== */
+.footer {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: var(--space-16) 0 var(--space-8);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.footer-section h3 {
+    color: var(--primary);
+    font-family: var(--font-royal);
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+}
+
+.footer-section p,
+.footer-section li {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+
+.google-map {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    margin-top: var(--space-3);
+}
+
+/* ===============================================
+   WHATSAPP INTEGRATION
+   =============================================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 1000;
+    background: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    animation: pulse 1s infinite;
+}
+
+/* Stop pulse when popup is open */
+.whatsapp-float.no-pulse {
+    animation: none;
+}
+
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: var(--text-2xl);
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+ /* ===============================================
+     ENHANCED WHATSAPP POPUP
+     =============================================== */
+
+  /* WhatsApp Popup Container */
+  .whatsapp-popup {
+      position: fixed;
+      bottom: 80px;
+      right: 15px;
+      width: 300px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1001;
+      animation: popupSlideIn 0.3s ease-out;
+      /* Ensure no pulse animation inheritance */
+  }
+
+
+  /* Popup Content */
+  .popup-content {
+      padding: var(--space-6);
+  }
+
+  .popup-content h4 {
+      color: var(--primary);
+      font-family: var(--font-accent);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-4);
+      text-align: center;
+  }
+
+  /* Form Styles */
+  .popup-content input,
+  .popup-content textarea {
+      width: 100%;
+      padding: var(--space-3);
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-family: var(--font-clean);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-3);
+      transition: border-color 0.3s ease;
+  }
+
+  .popup-content input:focus,
+  .popup-content textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+  }
+
+  .popup-content textarea {
+      height: 80px;
+      resize: vertical;
+  }
+
+  /* Popup Buttons */
+  .popup-buttons {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+  }
+
+  .btn-send {
+      flex: 1;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: var(--space-3) var(--space-4);
+      border-radius: 8px;
+      font-family: var(--font-accent);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+  }
+
+  .btn-send:hover {
+      background: #1fb355;
+      transform: translateY(-1px);
+  }
+
+  .btn-close {
+      width: 40px;
+      height: 40px;
+      background: #f0f0f0;
+      color: #666;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: var(--text-base);
+      transition: all 0.3s ease;
+  }
+
+  .btn-close:hover {
+      background: #e0e0e0;
+  }
+
+  /* Popup Animation */
+  @keyframes popupSlideIn {
+      from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.9);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+      }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 480px) {
+      .whatsapp-popup {
+          width: calc(100vw - 30px);
+          bottom: 80px;
+          right:5%;
+          margin-left: calc(-50vw + 15px);
+      }
+  }
+
+  @media (min-width: 768px) {
+      .whatsapp-popup {
+          bottom: 90px;
+          right: 20px;
+      }
+  }
+
+
+/* ===============================================
+   FORM ELEMENTS
+   =============================================== */
+input, textarea, select {
+    width: 100%;
+    padding: var(--space-3);
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-clean);
+    font-size: var(--text-base);
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* ===============================================
+   SUCCESS AND ERROR STATES
+   =============================================== */
+
+
+/* ===============================================
+   RESPONSIVE - TABLET (768px+)
+   =============================================== */
+@media (min-width: 768px) {
+    /* Layout - Container */
+    .container {
+        padding: 0 var(--space-6);
+    }
+
+    /* Header & Navigation */
+    .header-content {
+        padding: 0 var(--space-6);
+    }
+
+    /* Footer */
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-12);
+    }
+
+    /* WhatsApp Integration */
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-float a {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+}
+
+/* ===============================================
+   RESPONSIVE - DESKTOP (1024px+)
+   =============================================== */
+@media (min-width: 1024px) {
+    /* Layout - Container */
+    .container {
+        padding: 0 var(--space-8);
+    }
+
+    /* Header & Navigation */
+    .header {
+        padding: var(--space-6) 0;
+    }
+
+    .header-content {
+        padding: 0 var(--space-8);
+    }
+
+    .logo {
+        font-size: var(--text-2xl);
+        gap: var(--space-3);
+    }
+
+    /* Desktop Navigation - Show on desktop */
+    .navigation-desktop {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+    }
+
+    .navigation-desktop .nav-menu {
+        display: flex;
+        gap: var(--space-8);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navigation-desktop .nav-menu a {
+        color: white;
+        font-family: var(--font-accent);
+        font-weight: 500;
+        font-size: var(--text-lg);
+        padding: var(--space-2) 0;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .navigation-desktop .nav-menu a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+    }
+
+    .navigation-desktop .nav-menu a:hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    .navigation-desktop .nav-menu a:hover::after,
+    .navigation-desktop .nav-menu a.active::after {
+        width: 100%;
+    }
+
+    .navigation-desktop .language-toggle {
+        margin-top: 0;
+        justify-content: flex-start;
+    }
+
+    /* Hide mobile elements on desktop */
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    #mobileMenu {
+        display: none;
+    }
+
+    #mobileMenu.active {
+        display: none;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .google-map {
+        height: 250px;
+    }
+}
+
+
+/* ===============================================
+   ANIMATIONS - FOOD-RELEVANT ONLY
+   =============================================== */
+
+
+
+/* WhatsApp Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    }
+}
+
+/* Fade In Animation for Page Load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide In from Left */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide In from Right */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Bounce In Animation */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Animation Utility Classes */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-right {
+    animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-bounce-in {
+    animation: bounceIn 0.7s ease-out forwards;
+}
+
+/* Delayed Animations for Staggered Effects */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+
+/* Hover States */
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Performance Optimization */
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+        scroll-behavior: auto;
+    }
+}
+
+
+/* Print Styles - Remove animations */
+@media print {
+    *,
+    *::before,
+    *::after {
+        animation: none;
+        transition: none;
+        background: white;
+        color: black;
+    }
+}

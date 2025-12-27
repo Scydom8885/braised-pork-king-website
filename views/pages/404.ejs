@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - Return to Braised Pork King homepage for authentic Taiwanese cuisine">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title><%= title %></title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <%- include('../partials/header') %>
+
+    <!-- 404 Content -->
+    <section style="background: linear-gradient(135deg, var(--warm-white), var(--light-gold)); min-height: 70vh; display: flex; align-items: center; padding: var(--space-20) 0;">
+        <div class="container text-center">
+
+            <!-- Error Icon -->
+            <div style="font-size: 8rem; margin-bottom: var(--space-8); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">
+                🍜
+            </div>
+
+            <!-- Error Message -->
+            <h1 style="color: var(--primary); font-size: var(--text-5xl); margin-bottom: var(--space-6);">
+                Oops! This Bowl is Missing
+            </h1>
+
+            <p style="font-size: var(--text-xl); color: var(--charcoal); margin-bottom: var(--space-8); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                The page you're looking for seems to have been eaten!
+                But don't worry, we have plenty of delicious options waiting for you.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-6); margin-bottom: var(--space-12);">
+
+                <a href="/" class="btn btn-primary hover-lift">
+                    🏠 Back to Home
+                </a>
+
+                <a href="https://wa.me/<%= businessPhone %>?text=Hello%20Braised%20Pork%20King!%20I%20was%20looking%20for%20something%20on%20your%20website%20but%20couldn't%20find%20it.%20Can%20you%20help%3F"
+                   class="btn btn-secondary hover-lift"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    💬 Ask for Help
+                </a>
+
+            </div>
+
+            <!-- Quick Links -->
+            <div style="background: white; padding: var(--space-8); border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto;">
+                <h3 style="color: var(--primary); margin-bottom: var(--space-6); font-size: var(--text-2xl);">
+                    Popular Pages
+                </h3>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-4);">
+
+                    <a href="/" style="display: block; padding: var(--space-4); background: var(--light-gold); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+                        <div style="font-size: 2rem; margin-bottom: var(--space-2);">🍛</div>
+                        <div style="font-weight: 600; color: var(--primary);">Our Menu</div>
+                    </a>
+
+                    <a href="/about" style="display: block; padding: var(--space-4); background: var(--light-gold); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+                        <div style="font-size: 2rem; margin-bottom: var(--space-2);">👑</div>
+                        <div style="font-weight: 600; color: var(--primary);">Our Story</div>
+                    </a>
+
+                    <a href="/franchise" style="display: block; padding: var(--space-4); background: var(--light-gold); border-radius: 12px; text-decoration: none; transition: all 0.3s ease;">
+                        <div style="font-size: 2rem; margin-bottom: var(--space-2);">🏪</div>
+                        <div style="font-weight: 600; color: var(--primary);">Franchise</div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+
+    <!-- Scripts -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Add hover effects to quick links
+        const quickLinks = document.querySelectorAll('a[style*="padding: var(--space-4)"]');
+        quickLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+            });
+
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Track 404 page visits for analytics
+        console.log('404 page visited:', window.location.pathname);
+
+        // Future analytics
+        // gtag('event', '404_error', {
+        //     event_category: 'error',
+        //     page_path: window.location.pathname
+        // });
+    });
+    </script>
+
+</body>
+</html>

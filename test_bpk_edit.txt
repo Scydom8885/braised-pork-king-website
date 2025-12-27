@@ -1,0 +1,3 @@
+BPK test file for investigating modification conflicts.
+Edit successful - no conflicts detected in BPK directory.
+Testing Claude Code edit at 2025-09-24 - attempting to reproduce VS Code conflict.
