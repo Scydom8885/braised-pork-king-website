@@ -286,12 +286,22 @@
                 font-size: 3.5rem;
             }
 
-            .menu-section,
-            .about-teaser {
-                padding: var(--space-20) var(--space-8);
-/* Franchise CTA buttons responsive */            section[style*="background: var(--secondary)"] {                padding: var(--space-20) var(--space-8);            }            section[style*="background: var(--secondary)"] > div > div {                flex-direction: row;                justify-content: center;            }
+          
+              .menu-section,
+              .about-teaser {
+                  padding: var(--space-20) var(--space-8);
+              }
+
+              /* Franchise CTA buttons responsive */  
+              section[style*="background: var(--secondary)"] {
+                  padding: var(--space-20) var(--space-8);
+              }
+
+              section[style*="background: var(--secondary)"] > div > div {
+                  flex-direction: row;
+                  justify-content: center;
+              }
             }
-        }
     </style>
 </head>
 
@@ -304,20 +314,20 @@
     <section class="hero-section">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>
+                <h1 class="animate-fade-in">
                     <span data-lang-en>⭐ Star-Worthy Braised Pork Dish</span>
                     <span data-lang-zh style="display: none;">⭐ 星级卤肉料理</span>
                 </h1>
-                <p data-lang-en>
+                <p data-lang-en class="animate-fade-in animate-delay-1">
                     Featured in The Star newspaper for our authentic Taiwanese braised pork rice.
                     Every bowl is made with Chef Alex Gan's secret 8-spice gravy recipe.
                 </p>
-                <p data-lang-zh style="display: none;">
+                <p data-lang-zh class="animate-fade-in animate-delay-1" style="display: none;">
                     星报专题报导我们的正宗台湾卤肉饭。
                     每一碗都采用厨师Alex Gan的独家八种香料秘方调制。
                 </p>
 
-                <div class="hero-buttons">
+                <div class="hero-buttons animate-fade-in animate-delay-2">
                     <a href="/images/about/TheStarNewspaper.png" target="_blank" class="hero-btn hero-btn-primary">
                         <i class="fa-solid fa-newspaper"></i>
                         <span data-lang-en>Read The Star Article</span>
@@ -327,7 +337,7 @@
                 </div>
             </div>
             <div>
-                <img src="/images/about/TheStarNewspaper.png" alt="The Star Newspaper Feature" class="hero-image">
+                <img src="/images/about/TheStarNewspaper.png" alt="The Star Newspaper Feature" class="hero-image animate-slide-right animate-delay-1">
             </div>
         </div>
     </section>
@@ -336,17 +346,17 @@
     <section class="menu-section">
         <div class="about-content">
             
-        <h2>
+        <h2 class="animate-fade-in">
             <span data-lang-en>TOP 3 Signature</span>
             <span data-lang-zh style="display: none;">TOP 3招牌</span>
         </h2>
-         <p data-lang-en>Authentic. Bold. Unforgettable.The dishes our customers keep coming back for.</p>
-          <p data-lang-zh style="display: none;">客人一吃再吃的招牌料理。</p>
+         <p data-lang-en class="animate-fade-in animate-delay-1">Authentic. Bold. Unforgettable.The dishes our customers keep coming back for.</p>
+          <p data-lang-zh class="animate-fade-in animate-delay-1" style="display: none;">客人一吃再吃的招牌料理。</p>
     </div>
         <div class="menu-grid">
             <!-- TOP 1: Premium Kong Bak Rice -->
-            <div class="dish-card">
-                <div class="top-badge">TOP 1</div>
+            <div class="dish-card animate-slide-left animate-delay-1 hover-lift">
+                <div class="top-badge animate-bounce-in animate-delay-2">TOP 1</div>
                 <img src="/images/gallery/bpkMenu-01.jpg" alt="Premium Kong Bak Rice" class="dish-image">
                 <div class="dish-info">
                     <h3 data-lang-en>Premium Kong Bak Rice</h3>
@@ -362,8 +372,8 @@
             </div>
 
             <!-- TOP 2: Taiwanese Braised Pork Rice Set -->
-            <div class="dish-card">
-                <div class="top-badge">TOP 2</div>
+            <div class="dish-card animate-scale-in animate-delay-3 hover-lift">
+                <div class="top-badge animate-bounce-in animate-delay-3">TOP 2</div>
                 <img src="/images/gallery/BraisedPorkKing_webMenu_2025-05.jpg" alt="Taiwanese Braised Pork Rice Set" class="dish-image">
                 <div class="dish-info">
                     <h3 data-lang-en>Taiwanese Braised Pork Set</h3>
@@ -379,8 +389,8 @@
             </div>
 
             <!-- TOP 3: Homemade Yummy Sambal -->
-            <div class="dish-card">
-                <div class="top-badge">TOP 3</div>
+            <div class="dish-card animate-slide-right animate-delay-3 hover-lift">
+                <div class="top-badge animate-bounce-in animate-delay-4">TOP 3</div>
                 <img src="/images/gallery/BraisedPorkKing_webMenu_2025bg-08.jpg" alt="Homemade Yummy Sambal" class="dish-image">
                 <div class="dish-info">
                     <h3 data-lang-en>Homemade Yummy Sambal</h3>
@@ -401,17 +411,17 @@
     <!-- About Teaser Section -->
     <section class="about-teaser">
         <div class="about-content">
-            <h2>
+            <h2 class="animate-fade-in">
                 <span data-lang-en>About Our Story</span>
                 <span data-lang-zh style="display: none;">关于我们的故事</span>
             </h2>
-            <p data-lang-en>
+            <p data-lang-en class="animate-fade-in animate-delay-1">
                 Family heritage meets culinary passion. Discover the story behind our Star-worthy braised pork.
             </p>
-            <p data-lang-zh style="display: none;">
+            <p data-lang-zh class="animate-fade-in animate-delay-1" style="display: none;">
                 家族传承遇上料理热情。探索我们星级卤肉背后的故事。
             </p>
-            <a href="/about" class="hero-btn hero-btn-primary">
+            <a href="/about" class="hero-btn hero-btn-primary animate-bounce-in animate-delay-2 hover-lift">
                 <span data-lang-en>Learn More About Us</span>
                 <span data-lang-zh style="display: none;">了解更多关于我们</span>
                 <i class="fa-solid fa-arrow-right"></i>
@@ -421,11 +431,11 @@
 <!-- Franchise CTA Section -->    
  <section style="background:  linear-gradient(125deg, var(--primary-light),var(--secondary-light), var(--primary)); padding: var(--space-8); ">        
     <div class="about-content">            
-        <h2 style="color: white; margin-bottom: var(--space-2);">                
+        <h2 class="animate-bounce-in" style="color: white; margin-bottom: var(--space-2);">                
             <span data-lang-en>Ready to Own Your Stall ? </span>                
             <span data-lang-zh style="display: none;">准备好拥有自己的卤肉饭王档口了吗？</span>            
         </h2>            
-        <p style="color: white; margin-bottom: var(--space-8);">                
+        <p class="animate-fade-in animate-delay-1" style="color: white; margin-bottom: var(--space-8);">                
             <span data-lang-en>Join us and let's bring Star-Worthy Success to your community!</span>                
             <span data-lang-zh style="display: none;">将星级成功带到您的社区</span>            
         </p>            
@@ -435,7 +445,7 @@
                 <span data-lang-zh style="display: none;">查看加盟信息</span>                    
                 <i class="fa-solid fa-circle-info"></i>                
             </a>                 -->
-            <a href="https://wa.me/60169803668?text=Hello!%20I%20want%20to%20inquire%20about%20franchise%20opportunities" class="hero-btn" style="background: white; color: var(--secondary); border: 4px solid white;">                    
+            <a href="https://wa.me/60169803668?text=Hello!%20I%20want%20to%20inquire%20about%20franchise%20opportunities" class="hero-btn animate-scale-in animate-delay-2 hover-lift" style="background: white; color: var(--secondary); border: 4px solid white;">                    
                 <i class="fa-brands fa-whatsapp"></i>                    
                 <span data-lang-en>Contact Us Now</span>                    
                 <span data-lang-zh style="display: none;">联系我们</span>                

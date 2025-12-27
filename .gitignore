@@ -87,3 +87,4 @@ build/
 # Package manager lock files (keep one)
 # package-lock.json
 # yarn.lock
+.vercel
